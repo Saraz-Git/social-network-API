@@ -6,29 +6,19 @@ MongoDB is a popular choice for many social networks due to its speed with large
 
 In addition to using the [Express.js](https://www.npmjs.com/package/express) and [Mongoose](https://www.npmjs.com/package/mongoose) packages, you may also optionally use a JavaScript date library of your choice or the native JavaScript `Date` object to format timestamps.
 
-## User Story
+## Table of Contents
 
-```md
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
-```
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Review](#review)
 
-## Acceptance Criteria
+## Installation
 
-```md
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-```
+To clone and run this repository you'll need Git, MongoDB and Node.js (which comes with npm) installed on your computer.
+In command line, install dependencies `npm i` and then `npm start` .
 
-## Mock Up
+## Usage
 
 The following animations show examples of the application's API routes being tested in Insomnia.
 
@@ -52,95 +42,7 @@ The following animation shows the POST and DELETE routes for a user’s friend l
 
 In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
-## Getting Started
-
-Use the following guidelines to set up your models and API routes:
-
-### Models
-
-**User**:
-
-- `username`
-
-  - String
-  - Unique
-  - Required
-  - Trimmed
-
-- `email`
-
-  - String
-  - Required
-  - Unique
-  - Must match a valid email address (look into Mongoose's matching validation)
-
-- `thoughts`
-
-  - Array of `_id` values referencing the `Thought` model
-
-- `friends`
-  - Array of `_id` values referencing the `User` model (self-reference)
-
-**Schema Settings**:
-
-Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
-
----
-
-**Thought**:
-
-- `thoughtText`
-
-  - String
-  - Required
-  - Must be between 1 and 280 characters
-
-- `createdAt`
-
-  - Date
-  - Set default value to the current timestamp
-  - Use a getter method to format the timestamp on query
-
-- `username` (The user that created this thought)
-
-  - String
-  - Required
-
-- `reactions` (These are like replies)
-  - Array of nested documents created with the `reactionSchema`
-
-**Schema Settings**:
-
-Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
-
----
-
-**Reaction** (SCHEMA ONLY)
-
-- `reactionId`
-
-  - Use Mongoose's ObjectId data type
-  - Default value is set to a new ObjectId
-
-- `reactionBody`
-
-  - String
-  - Required
-  - 280 character maximum
-
-- `username`
-
-  - String
-  - Required
-
-- `createdAt`
-  - Date
-  - Set default value to the current timestamp
-  - Use a getter method to format the timestamp on query
-
-**Schema Settings**:
-
-This will not be a model, but rather will be used as the `reaction` field's subdocument schema in the `Thought` model.
+## Features
 
 ### API Routes
 
@@ -209,4 +111,4 @@ This will not be a model, but rather will be used as the `reaction` field's subd
 
 - A walkthrough video demo
 
-- The URL of the GitHub repository
+- The URL of the GitHub repository: https://github.com/Saraz-Git/social-network-API

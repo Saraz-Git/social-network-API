@@ -15,7 +15,7 @@ const thoughtSchema = new Schema(
             get: (date) => {
                 if (date) return date.toISOString().split("T")[0];
             },
-            default: Date.now,
+            default: Date.now
         },
         username: {
             type: String,
@@ -26,6 +26,7 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             virtuals: true,
+            getters: true
         },
         id: false,
     }
