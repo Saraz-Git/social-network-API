@@ -67,6 +67,14 @@ module.exports = {
             }
             //remove a user's associated thoughts when the user is deleted
             await Thought.deleteMany({ _id: { $in: user.thoughts } });
+
+            // remove this user from this user's friends' friends field
+            await User.findOneAndUpdate(
+                { friends: req.params.userId },
+                { $pull: { friends: req.params.userId } },
+                { runValidators: true, new: true }
+            );
+
             res.json({ message: 'User successfully deleted!' });
         } catch (err) {
             res.status(500).json(err);
