@@ -1,11 +1,12 @@
 const User = require('../models/User');
+const Thought = require('../models/Thought');
 
 module.exports = {
     //get all users
     async getUsers(req, res) {
         try {
             const users = await User.find();
-            res.json(users);
+            res.status(200).json(users);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -14,13 +15,13 @@ module.exports = {
     //get a user
     async getSingleUser(req, res) {
         try {
-            const user = await User.findOne({ _id: req.params.userId }).select('-__v');
+            const user = await User.findOne({ _id: req.params.userId }).select('-__v').populate('thoughts');
 
             if (!user) {
                 return res.status(404).json({ message: 'No user with that ID' });
             }
 
-            res.json(user);
+            res.status(200).json(user);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -30,7 +31,7 @@ module.exports = {
     async createUser(req, res) {
         try {
             const dbUserData = await User.create(req.body);
-            res.json(dbUserData);
+            res.status(200).json(dbUserData);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -49,7 +50,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user with this id!' });
             }
 
-            res.json(user);
+            res.status(200).json(user);
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
@@ -69,6 +70,7 @@ module.exports = {
             res.json({ message: 'User successfully deleted!' });
         } catch (err) {
             res.status(500).json(err);
+            console.log(err);
         }
     },
 
@@ -93,7 +95,7 @@ module.exports = {
                 res.status(404).json({ message: 'No user with this id!' });
                 return;
             };
-            res.json(user);
+            res.status(200).json(user);
         } catch (err) {
             res.status(500).json(err);
         };
@@ -120,7 +122,7 @@ module.exports = {
                 res.status(404).json({ message: 'No user with this id!' });
                 return;
             };
-            res.json(user);
+            res.status(200).json(user);
         } catch (err) {
             res.status(500).json(err);
         };
