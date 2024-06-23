@@ -66,7 +66,7 @@ In addition to this, your walkthrough video should show the POST and DELETE rout
 
 - `DELETE` to remove user by its `_id`
 
-**BONUS**: Remove a user's associated thoughts when deleted.
+      Remove a user's associated thoughts when deleted.
 
 ---
 
@@ -109,6 +109,6 @@ In addition to this, your walkthrough video should show the POST and DELETE rout
 
 ## Review
 
-- A walkthrough video demo
+- A walkthrough video demo: [video](https://www.loom.com/share/fe8646c22cd144478e84236d4025002d)
 
 - The URL of the GitHub repository: https://github.com/Saraz-Git/social-network-API
