@@ -4,8 +4,6 @@
 
 MongoDB is a popular choice for many social networks due to its speed with large amounts of data and flexibility with unstructured data. This application is the API part for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. It uses Express.js for routing, MongoDB database for handling large amount of unstructured data, and the Mongoose ODM for query building.
 
-In addition to using the [Express.js](https://www.npmjs.com/package/express) and [Mongoose](https://www.npmjs.com/package/mongoose) packages, you may also optionally use a JavaScript date library of your choice or the native JavaScript `Date` object to format timestamps.
-
 ## Table of Contents
 
 - [Installation](#installation)
@@ -34,13 +32,9 @@ The following animation shows the POST, PUT, and DELETE routes for users being t
 
 ![Demo that shows the POST, PUT, and DELETE routes for users being tested in Insomnia.](./Assets/18-nosql-homework-demo-03.gif)
 
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
-
 The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia:
 
 ![Demo that shows the POST and DELETE routes for a user’s friend list being tested in Insomnia.](./Assets/18-nosql-homework-demo-04.gif)
-
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
 ## Features
 
